@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlexiClass | L'art du Plexiglass sur mesure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:#f8f6f2;color:#1a1a1a;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:"DM Sans",sans-serif;}
+input,textarea,select{font-family:"DM Sans",sans-serif;}
+h1,h2,h3,h4,h5,h6,.font-heading{font-family:"Cormorant Garamond",serif;}
+
+/* ===== UTILITIES ===== */
+.hidden{display:none!important;}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float1{0%,100%{transform:translate(0,0) rotate(12deg);}50%{transform:translate(20px,-20px) rotate(12deg);}}
+@keyframes float2{0%,100%{transform:translate(0,0) rotate(-6deg);}50%{transform:translate(-30px,20px) rotate(-6deg);}}
+@keyframes float3{0%,100%{transform:translate(0,0) rotate(45deg);}50%{transform:translate(15px,30px) rotate(45deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out,transform 0.8s ease-out;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ===== NAVBAR ===== */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,246,242,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #e8e0d4;transition:box-shadow 0.3s;}
+#navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo a{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;color:#1a1a1a;}
+.nav-logo a span{color:#b8860b;font-style:italic;}
+.nav-logo-sub{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#6b6b6b;margin-top:2px;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;color:#1a1a1a;transition:color 0.2s;}
+.nav-links a:hover{color:#b8860b;}
+.nav-social{display:flex;gap:1rem;align-items:center;}
+.nav-social a{color:#1a1a1a;transition:color 0.2s;display:flex;align-items:center;}
+.nav-social a:hover{color:#b8860b;}
+.nav-social svg{width:20px;height:20px;}
+#mobile-menu-btn{display:none;background:none;border:none;color:#1a1a1a;}
+#mobile-menu-btn svg{width:24px;height:24px;}
+#mobile-menu{display:none;background:#f8f6f2;border-bottom:1px solid #e8e0d4;padding:1rem 1.5rem;}
+#mobile-menu a{display:block;padding:0.6rem 0;font-size:1rem;font-weight:500;color:#1a1a1a;}
+#mobile-menu a:hover{color:#b8860b;}
+.mobile-social{display:flex;gap:1rem;padding:0.8rem 0;}
+.mobile-social a{color:#6b6b6b;font-size:0.9rem;}
+
+/* ===== HERO ===== */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:72px;}
+.hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.shape-1{position:absolute;top:20%;left:15%;width:200px;height:200px;border:1px solid #e8e0d4;background:rgba(255,255,255,0.4);border-radius:12px;animation:float1 8s ease-in-out infinite;}
+.shape-2{position:absolute;top:35%;right:10%;width:240px;height:300px;border:1px solid rgba(184,134,11,0.2);background:rgba(184,134,11,0.04);border-radius:16px;animation:float2 10s ease-in-out infinite;}
+.shape-3{position:absolute;bottom:15%;left:30%;width:140px;height:140px;border:1px solid rgba(44,122,122,0.15);background:rgba(44,122,122,0.04);border-radius:50%;animation:float3 9s ease-in-out infinite;}
+.hero-content{position:relative;z-index:2;max-width:900px;text-align:center;padding:0 1.5rem;}
+.hero-badge{display:inline-block;padding:0.4rem 1.2rem;border:1px solid rgba(184,134,11,0.4);border-radius:999px;background:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:#b8860b;margin-bottom:1.5rem;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:600;line-height:1.1;color:#1a1a1a;margin-bottom:1.5rem;}
+.hero-title em{color:#b8860b;font-style:italic;font-weight:400;}
+.hero-sub{font-size:1.1rem;color:#6b6b6b;max-width:650px;margin:0 auto 2.5rem;line-height:1.8;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{padding:1rem 2.5rem;background:#b8860b;color:#fff;font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;border:none;transition:background 0.2s,transform 0.2s;box-shadow:0 4px 15px rgba(184,134,11,0.3);}
+.btn-gold:hover{background:#a07609;transform:translateY(-2px);}
+.btn-outline{padding:1rem 2.5rem;background:transparent;color:#1a1a1a;font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;border:1.5px solid #1a1a1a;transition:all 0.2s;}
+.btn-outline:hover{background:#1a1a1a;color:#fff;}
+
+/* ===== CATALOGUE SECTION ===== */
+#catalog-section{max-width:1280px;margin:0 auto;padding:5rem 1.5rem;}
+.cat-header{text-align:center;margin-bottom:3rem;}
+.cat-header h2{font-family:"Cormorant Garamond",serif;font-size:2.8rem;font-weight:600;color:#1a1a1a;margin-bottom:1rem;}
+.gold-bar{width:80px;height:3px;background:#b8860b;margin:0 auto 2.5rem;}
+.search-wrap{max-width:560px;margin:0 auto 2rem;position:relative;}
+.search-wrap input{width:100%;padding:1rem 3rem 1rem 1.5rem;background:#fff;border:1px solid #e8e0d4;border-radius:999px;font-size:0.95rem;color:#1a1a1a;outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.search-wrap input:focus{border-color:#b8860b;box-shadow:0 0 0 3px rgba(184,134,11,0.1);}
+.search-wrap input::placeholder{color:#6b6b6b;}
+.search-icon{position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);color:#6b6b6b;pointer-events:none;}
+.search-icon svg{width:20px;height:20px;}
+.filter-pills{display:flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;}
+.pill{padding:0.45rem 1.2rem;border:1px solid #e8e0d4;border-radius:999px;background:#fff;font-size:0.78rem;font-weight:500;color:#1a1a1a;transition:all 0.2s;white-space:nowrap;}
+.pill:hover,.pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.cat-card{background:#fff;border:1px solid #e8e0d4;border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1);border-color:#b8860b;}
+.cat-card:hover .cat-card-title{color:#b8860b;}
+.cat-card:hover .cat-arrow{transform:translateX(5px);}
+.cat-thumb{height:180px;background:linear-gradient(135deg,#f0ece1 0%,#e8e0d4 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.cat-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.cat-card:hover .cat-thumb img{transform:scale(1.05);}
+.cat-thumb-placeholder{font-family:"Cormorant Garamond",serif;font-size:2.5rem;color:#b8860b;opacity:0.7;}
+.cat-info{padding:1.2rem 1.4rem;}
+.cat-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;}
+.cat-card-title{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:#1a1a1a;transition:color 0.2s;}
+.cat-badge{font-size:0.68rem;font-weight:700;color:#b8860b;background:rgba(184,134,11,0.1);padding:0.2rem 0.6rem;border-radius:4px;white-space:nowrap;margin-left:0.5rem;flex-shrink:0;}
+.cat-desc{font-size:0.82rem;color:#6b6b6b;line-height:1.6;margin-bottom:1rem;}
+.cat-link{display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:500;color:#1a1a1a;}
+.cat-arrow{transition:transform 0.2s;display:inline-block;}
+.no-results{text-align:center;padding:4rem 1rem;display:none;}
+.no-results p{font-size:1.1rem;color:#6b6b6b;margin-bottom:1rem;}
+.no-results button{background:none;border:none;color:#b8860b;font-size:0.9rem;text-decoration:underline;}
+
+/* ===== LEVEL 2 - PRODUCTS GRID ===== */
+#level-2{display:none;}
+#level-3{display:none;}
+.back-btn{display:inline-flex;align-items:center;gap:0.4rem;background:none;border:none;color:#6b6b6b;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:500;margin-bottom:2rem;transition:color 0.2s;padding:0;}
+.back-btn:hover{color:#b8860b;}
+.back-arrow{transition:transform 0.2s;}
+.back-btn:hover .back-arrow{transform:translateX(-3px);}
+.level-header{margin-bottom:2.5rem;}
+.level-header h2{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:600;color:#1a1a1a;margin-bottom:0.5rem;}
+.level-header p{color:#6b6b6b;font-size:1rem;max-width:600px;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;}
+.prod-card{background:#fff;border:1px solid #e8e0d4;border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.3s;}
+.prod-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.08);border-color:rgba(184,134,11,0.4);}
+.prod-img{height:210px;background:linear-gradient(135deg,#f0ece1 0%,#e8e0d4 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.prod-card:hover .prod-img img{transform:scale(1.05);}
+.prod-placeholder{font-family:"Cormorant Garamond",serif;font-size:2rem;color:#b8860b;opacity:0.5;}
+.prod-info{padding:1rem 1.1rem;}
+.prod-name{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:600;color:#1a1a1a;margin-bottom:0.4rem;line-height:1.3;}
+.prod-desc-short{font-size:0.78rem;color:#6b6b6b;line-height:1.5;margin-bottom:0.9rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prod-btn{width:100%;padding:0.55rem;border:1px solid #e8e0d4;background:transparent;color:#1a1a1a;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;transition:all 0.2s;border-radius:6px;}
+.prod-btn:hover{border-color:#b8860b;color:#b8860b;}
+
+/* ===== LEVEL 3 - PRODUCT DETAIL ===== */
+.detail-card{background:#fff;border-radius:20px;border:1px solid #e8e0d4;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.06);}
+.detail-inner{display:flex;flex-direction:column;}
+.detail-img{min-height:350px;background:linear-gradient(135deg,#f0ece1 0%,#e8e0d4 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.detail-img img{width:100%;height:100%;object-fit:cover;}
+.detail-placeholder{font-family:"Cormorant Garamond",serif;font-size:4rem;color:#b8860b;opacity:0.3;}
+.detail-info{padding:2.5rem;}
+.detail-cat-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#b8860b;margin-bottom:0.8rem;display:block;}
+.detail-title{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;color:#1a1a1a;margin-bottom:1rem;line-height:1.2;}
+.detail-divider{width:50px;height:2px;background:#e8e0d4;margin-bottom:1.2rem;}
+.detail-desc{font-size:1rem;color:#6b6b6b;line-height:1.8;margin-bottom:2rem;}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;padding:1rem 2rem;background:#b8860b;color:#fff;font-size:0.82rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;border:none;border-radius:6px;transition:all 0.2s;width:100%;}
+.btn-wa:hover{background:#a07609;transform:translateY(-2px);}
+.btn-wa svg{width:20px;height:20px;flex-shrink:0;}
+
+/* ===== CONTACT ===== */
+#contact-section{background:#1a1a1a;color:#fff;padding:5rem 1.5rem;}
+.contact-inner{max-width:900px;margin:0 auto;text-align:center;}
+.contact-inner h2{font-family:"Cormorant Garamond",serif;font-size:2.5rem;font-weight:600;margin-bottom:0.8rem;}
+.contact-sub{color:#9ca3af;font-size:1rem;margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto;}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-bottom:2.5rem;}
+.contact-card{border:1px solid #374151;border-radius:12px;padding:1.8rem 1rem;background:rgba(255,255,255,0.04);transition:border-color 0.2s;}
+.contact-card:hover{border-color:#b8860b;}
+.contact-icon{width:44px;height:44px;background:rgba(184,134,11,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#b8860b;}
+.contact-icon svg{width:22px;height:22px;}
+.contact-card h3{font-size:0.88rem;font-weight:500;color:#fff;margin-bottom:0.4rem;}
+.contact-card p,.contact-card a{font-size:0.82rem;color:#9ca3af;display:block;}
+.contact-card a:hover{color:#b8860b;}
+
+/* ===== FOOTER ===== */
+footer{background:#111;color:#6b7280;padding:2.5rem 1.5rem;text-align:center;}
+.footer-logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:600;color:#fff;margin-bottom:0.5rem;}
+.footer-logo span{color:#b8860b;font-style:italic;}
+footer p{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;}
+footer small{font-size:0.72rem;}
+
+/* ===== WHATSAPP MODAL ===== */
+#wa-modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;}
+#wa-modal.open{display:flex;}
+.wa-modal-box{background:#fff;border-radius:16px;width:100%;max-width:440px;overflow:hidden;animation:fadeUp 0.3s ease-out;}
+.wa-modal-head{background:#1a1a1a;padding:1.5rem;color:#fff;position:relative;}
+.wa-modal-head h3{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;margin-bottom:0.3rem;}
+.wa-modal-head p{font-size:0.82rem;color:#9ca3af;}
+.wa-modal-close{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:#9ca3af;transition:color 0.2s;}
+.wa-modal-close:hover{color:#fff;}
+.wa-modal-close svg{width:22px;height:22px;}
+.wa-modal-body{padding:1.5rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.78rem;font-weight:500;color:#374151;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.08em;}
+.form-group input,.form-group textarea{width:100%;padding:0.65rem 0.9rem;border:1px solid #d1d5db;border-radius:8px;font-size:0.9rem;color:#1a1a1a;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group textarea:focus{border-color:#b8860b;}
+.form-group textarea{resize:vertical;min-height:80px;}
+.btn-whatsapp{width:100%;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.9rem;background:#25D366;color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:8px;margin-top:0.5rem;transition:background 0.2s;}
+.btn-whatsapp:hover{background:#1fb855;}
+.btn-whatsapp svg{width:18px;height:18px;}
+
+/* ===== ADMIN ===== */
+#admin-view{min-height:100vh;background:#f3f4f6;font-family:"DM Sans",sans-serif;}
+.admin-login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.admin-login-box{background:#fff;border-radius:16px;box-shadow:0 4px 30px rgba(0,0,0,0.1);padding:2.5rem;width:100%;max-width:400px;}
+.admin-login-box h2{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:600;text-align:center;margin-bottom:0.3rem;}
+.admin-login-box .sub{text-align:center;color:#6b7280;font-size:0.88rem;margin-bottom:2rem;}
+.admin-field label{display:block;font-size:0.78rem;font-weight:500;color:#374151;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.06em;}
+.admin-field input{width:100%;padding:0.75rem 1rem;border:1px solid #d1d5db;border-radius:8px;font-size:0.95rem;outline:none;transition:border-color 0.2s;margin-bottom:1rem;}
+.admin-field input:focus{border-color:#b8860b;}
+.login-error{color:#dc2626;font-size:0.82rem;margin-top:-0.5rem;margin-bottom:0.8rem;display:none;}
+.btn-dark{width:100%;padding:0.85rem;background:#1a1a1a;color:#fff;font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:8px;transition:background 0.2s;margin-bottom:0.7rem;}
+.btn-dark:hover{background:#333;}
+.btn-light{width:100%;padding:0.85rem;background:#f3f4f6;color:#374151;font-size:0.85rem;font-weight:500;border:none;border-radius:8px;transition:background 0.2s;}
+.btn-light:hover{background:#e5e7eb;}
+
+/* Admin Layout */
+.admin-layout{display:flex;height:100vh;overflow:hidden;}
+.admin-sidebar{width:240px;background:#1a1a1a;color:#fff;display:flex;flex-direction:column;flex-shrink:0;height:100%;}
+.sidebar-logo{padding:1.5rem;border-bottom:1px solid #374151;}
+.sidebar-logo h2{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:#b8860b;}
+.sidebar-logo span{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:#6b7280;}
+.sidebar-nav{flex:1;padding:1rem;overflow-y:auto;}
+.sidebar-btn{width:100%;display:block;padding:0.7rem 1rem;text-align:left;background:none;border:none;color:#9ca3af;font-size:0.85rem;font-weight:500;border-radius:8px;transition:all 0.2s;margin-bottom:0.2rem;}
+.sidebar-btn:hover{color:#fff;background:rgba(255,255,255,0.06);}
+.sidebar-btn.active{color:#b8860b;background:rgba(255,255,255,0.08);}
+.sidebar-footer{padding:1rem;border-top:1px solid #374151;}
+.btn-gold-sm{width:100%;padding:0.6rem;background:#b8860b;color:#fff;font-size:0.78rem;font-weight:500;border:none;border-radius:6px;margin-bottom:0.5rem;transition:background 0.2s;}
+.btn-gold-sm:hover{background:#a07609;}
+.btn-ghost{width:100%;padding:0.6rem;background:transparent;color:#9ca3af;font-size:0.78rem;border:1px solid #374151;border-radius:6px;transition:all 0.2s;}
+.btn-ghost:hover{color:#fff;border-color:#6b7280;}
+
+/* Admin Content */
+.admin-main{flex:1;overflow-y:auto;padding:2rem;background:#f3f4f6;}
+.admin-tab{display:none;}
+.admin-tab.active{display:block;}
+.admin-title{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;color:#1a1a1a;margin-bottom:1.5rem;}
+.stat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
+.stat-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid #e5e7eb;}
+.stat-card h3{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;margin-bottom:0.5rem;}
+.stat-card p{font-size:2.2rem;font-weight:700;color:#1a1a1a;}
+.admin-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+.admin-card-title{font-size:1rem;font-weight:600;color:#1a1a1a;margin-bottom:1.2rem;}
+.form-row{margin-bottom:1rem;}
+.form-row label{display:block;font-size:0.75rem;font-weight:500;color:#374151;margin-bottom:0.35rem;text-transform:uppercase;letter-spacing:0.06em;}
+.form-row input,.form-row textarea,.form-row select{width:100%;padding:0.6rem 0.9rem;border:1px solid #d1d5db;border-radius:8px;font-size:0.88rem;color:#1a1a1a;outline:none;transition:border-color 0.2s;}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:#b8860b;}
+.form-row textarea{resize:vertical;min-height:80px;}
+.btn-save{padding:0.6rem 1.5rem;background:#1a1a1a;color:#fff;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;border:none;border-radius:6px;transition:background 0.2s;}
+.btn-save:hover{background:#333;}
+.admin-table-wrap{background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;}
+.admin-table{width:100%;border-collapse:collapse;}
+.admin-table thead{background:#f9fafb;}
+.admin-table th{padding:0.75rem 1rem;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;font-weight:600;}
+.admin-table td{padding:0.9rem 1rem;border-top:1px solid #f3f4f6;font-size:0.85rem;color:#1a1a1a;vertical-align:middle;}
+.admin-table td.muted{color:#6b7280;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tbl-actions{text-align:right;white-space:nowrap;}
+.btn-edit{color:#2c7a7a;background:none;border:none;font-size:0.8rem;font-weight:500;margin-right:0.8rem;transition:color 0.2s;}
+.btn-edit:hover{color:#1a5f5f;}
+.btn-del{color:#dc2626;background:none;border:none;font-size:0.8rem;font-weight:500;transition:color 0.2s;}
+.btn-del:hover{color:#b91c1c;}
+.table-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.8rem;}
+.btn-add{padding:0.55rem 1.2rem;background:#1a1a1a;color:#fff;font-size:0.78rem;font-weight:500;border:none;border-radius:6px;transition:background 0.2s;white-space:nowrap;}
+.btn-add:hover{background:#333;}
+.empty-state{padding:2.5rem;text-align:center;color:#6b7280;font-size:0.9rem;}
+
+/* Admin Toast */
+#admin-toast{position:fixed;top:1.2rem;right:1.2rem;background:#16a34a;color:#fff;padding:0.7rem 1.3rem;border-radius:8px;font-size:0.85rem;font-weight:500;z-index:1000;transform:translateY(-120%);opacity:0;transition:all 0.3s;}
+#admin-toast.show{transform:translateY(0);opacity:1;}
+
+/* Admin Product Modal */
+#admin-prod-modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem;}
+#admin-prod-modal.open{display:flex;}
+.prod-modal-box{background:#fff;border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;}
+.prod-modal-head{padding:1.2rem 1.5rem;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;background:#f9fafb;}
+.prod-modal-head h3{font-size:1rem;font-weight:600;color:#1a1a1a;}
+.prod-modal-head button{background:none;border:none;color:#6b7280;transition:color 0.2s;}
+.prod-modal-head button:hover{color:#1a1a1a;}
+.prod-modal-head button svg{width:22px;height:22px;}
+.prod-modal-body{padding:1.5rem;overflow-y:auto;flex:1;}
+.prod-modal-foot{padding:1rem 1.5rem;border-top:1px solid #e5e7eb;display:flex;justify-content:flex-end;gap:0.7rem;background:#f9fafb;}
+.btn-cancel{padding:0.55rem 1.2rem;background:#f3f4f6;color:#374151;font-size:0.82rem;font-weight:500;border:1px solid #d1d5db;border-radius:6px;}
+.btn-cancel:hover{background:#e5e7eb;}
+.img-preview-wrap{display:flex;align-items:center;gap:1rem;}
+.img-thumb{width:80px;height:80px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.img-thumb img{width:100%;height:100%;object-fit:cover;}
+.img-thumb span{font-size:0.7rem;color:#9ca3af;}
+.file-input-label{font-size:0.78rem;color:#6b7280;line-height:1.5;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .nav-links,.nav-social{display:none;}
+  #mobile-menu-btn{display:flex;}
+  .admin-layout{flex-direction:column;}
+  .admin-sidebar{width:100%;height:auto;}
+  .sidebar-nav{display:flex;gap:0.3rem;padding:0.5rem;overflow-x:auto;}
+  .sidebar-btn{white-space:nowrap;flex-shrink:0;}
+  .admin-main{padding:1rem;}
+  .detail-inner{flex-direction:column;}
+  .detail-img{min-height:250px;}
+  .hero-title{font-size:2.4rem;}
+}
+@media(min-width:769px){
+  .detail-inner{flex-direction:row;}
+  .detail-img{width:50%;min-height:450px;}
+  .detail-info{width:50%;padding:3rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= PUBLIC SITE ================= -->
+<div id="public-view">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <a href="#"><img src="data:image/png;base64,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" alt="PlexiClass" style="height:44px;width:auto;display:block;"></a>
+      </div>
+      <div class="nav-links">
+        <a href="#catalog-section">Catalogue</a>
+        <a href="#contact-section">Contact</a>
+      </div>
+      <div class="nav-social">
+        <a href="#" id="nav-ig" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" id="nav-fb" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+        </a>
+        <a href="#" id="nav-wa" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.88-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+      </div>
+      <button id="mobile-menu-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu">
+      <a href="#catalog-section" class="mobile-link">Catalogue</a>
+      <a href="#contact-section" class="mobile-link">Contact</a>
+      <div class="mobile-social">
+        <a href="#" id="mobile-ig" target="_blank">Instagram</a>
+        <a href="#" id="mobile-fb" target="_blank">Facebook</a>
+        <a href="#" id="mobile-wa" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero">
+    <div class="hero-shapes">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+      <div class="shape-3"></div>
+    </div>
+    <div class="hero-content fade-up">
+      <div class="hero-badge" id="hero-badge">Fabricant &middot; Plexiglass Premium &middot; Maroc</div>
+      <h1 class="hero-title" id="hero-title">L&#x2019;art du <em>Plexiglass</em> sur mesure</h1>
+      <p class="hero-sub" id="hero-subtitle">D&eacute;couvrez notre gamme compl&egrave;te de solutions en acrylique de haute qualit&eacute;, fa&ccedil;onn&eacute;es avec pr&eacute;cision pour vos projets professionnels et d&eacute;coratifs.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="document.getElementById('catalog-section').scrollIntoView({behavior:'smooth'})">Voir le Catalogue</button>
+        <button class="btn-outline" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Nous Contacter</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATALOGUE -->
+  <main id="catalog-section">
+    <!-- LEVEL 1 -->
+    <div id="level-1">
+      <div class="cat-header fade-up">
+        <h2>Catalogue Complet</h2>
+        <div class="gold-bar"></div>
+        <div class="search-wrap">
+          <input type="text" id="search-input" placeholder="Rechercher une cat&eacute;gorie ou un produit...">
+          <div class="search-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+        </div>
+        <div class="filter-pills" id="filter-pills"></div>
+      </div>
+      <div class="categories-grid" id="categories-grid"></div>
+      <div class="no-results" id="no-results">
+        <p>Aucun r&eacute;sultat trouv&eacute;.</p>
+        <button onclick="clearSearch()">R&eacute;initialiser la recherche</button>
+      </div>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div id="level-2">
+      <button class="back-btn" onclick="showLevel(1)"><span class="back-arrow">&#8592;</span> Retour au Catalogue</button>
+      <div class="level-header">
+        <h2 id="l2-title">Cat&eacute;gorie</h2>
+        <p id="l2-desc"></p>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div id="level-3">
+      <button class="back-btn" onclick="showLevel(2)"><span class="back-arrow">&#8592;</span> Retour aux produits</button>
+      <div class="detail-card">
+        <div class="detail-inner">
+          <div class="detail-img" id="detail-img"></div>
+          <div class="detail-info">
+            <span class="detail-cat-label" id="detail-cat"></span>
+            <h2 class="detail-title" id="detail-name"></h2>
+            <div class="detail-divider"></div>
+            <p class="detail-desc" id="detail-desc"></p>
+            <button class="btn-wa" onclick="openWaModal()">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+              Demander Info / Devis
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CONTACT -->
+  <section id="contact-section">
+    <div class="contact-inner fade-up">
+      <h2>Parlons de votre projet</h2>
+      <div class="gold-bar" style="background:#b8860b;margin-bottom:1.5rem;"></div>
+      <p class="contact-sub">Vous avez un projet ? Notre &eacute;quipe est &agrave; votre disposition.</p>
+      <div class="contact-cards">
+        <a href="#" id="contact-email-link" class="contact-card">
+          <div class="contact-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+          <h3>Email</h3>
+          <p id="contact-email">Plexi.classe404@gmail.com</p>
+        </a>
+        <a href="#" id="contact-wa1-link" target="_blank" class="contact-card">
+          <div class="contact-icon"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></div>
+          <h3>WhatsApp 1</h3>
+          <a id="contact-wa1">+212 664 222 844</a>
+        </a>
+        <a href="#" id="contact-wa2-link" target="_blank" class="contact-card">
+          <div class="contact-icon"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></div>
+          <h3>WhatsApp 2</h3>
+          <a id="contact-wa2">+212 684 155 007</a>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAACQCAYAAADKtM0CAAAVhElEQVR4nO2dTawk11mGn3Fm7p96PBVHEBhp7Ot4EWeDO/YGNpk2CAEL5GuzgA1yT7wAsYjbiZDYILcBCbLAvl4lEsLTYy9AQkx6vEERGPeIBQQUu4csEoyS9GCJCEVAjX11/2bsYfF20d1Vp3uqq051V9f9Hql1b5/qrjpddd7z853vfOfU+fPnMQyjuty37AwYhlEsJnLDqDgmcsOoOCZyw6g4JnLDqDgmcsOoOCZyw6g4JnLDqDgmcsOoOCZyw6g4JnLDqDgmcsOoOCZyw6g4pws+/zng1vD/s8DjOc71DvDh8P/a8O9ejvMZxomgKJFvAgfAztjLFz2gD3SB60jwRYt9HTgC1oDjgq9VBOOVbRnw9cw2gEMP51km4/eikN9zqoD15JvAI8AbQN33yWMMgA7wMnCX4sR+bnidPvBSQdcogqhSehZVtMEyMzMkBH4fPbs8zyv6ba9QfDlLQ4/5y0YN2Ab+cPi+DXwfz+W4CJGfBf4VZX5RhEALuILf1nYd+Ckk7mCY1gL+nNUZKlwGmsvORIwu8LSH85Ttt7WArzFf+fsGo57uAHjYa47wb3gLgGdYrMCj63bQDdtAvQkfbAINJlvAJqsh8HOoBW8uOR8ugpzfrwEXKd9v22H+BmZn7P9t4DFPefl/irCubxdwzrTsoHH6GfwJfTv2vu7pvEVzC7+2EJ/0UC8pK6dR5bvquAQd+L5I0db1ZVBHQr8IfILVaHWLIoi97w1fy2SAhlUbC7hWDz+/N0Bd8TTXm8eoGGTKzZwsSuQ94EmP53sMibmJu0avI6F/nmpYYH3RA/4Ef72cLERlLs8zOUDj+vaMz4TAr8aumZUQ9eh2ZnxmgAzApWtUVrUlvwG8h1qEi8AuyW50HVleX1hgvlaBTVRoV5kjVAZ6TO+2t1Bl8JGna/4O00UeDo/d9XQtr6yyx9vB8O8/A19Ahrc4LVQJ1BzHjNVmA3gKzXy4CIFTHq/3oxnHmsB3KWErDqst8ogDVLNfwj3+alPSm2/k4hC4Dfwm7p5JG7iDplR98OKU9CbwTUrsJFUFkYNu8Baq2cPYsQbWmleVAzQWbpB87nU0j55XfBtoKrLtONZEQ8ZS23yqInKAfeBj3FbQFtaaV5U91FVuOI41md4Cp6EGfBb3ULCDBF56qiRy0AO/gmr3cXaAC4vOjLEwjoHv4XaOaaOWeN55+U3gk7iHgB00PFwJqiZyULe97Uh/BnmBGdXkCFXwTcexDvAoKhtpWEMOVW+SnMvuIoH7GusXThVFvg9cdaTvUK6VWEYxXMFdyfeAT3FvH4EN1DO4QnJato8MfSu1GrGKIgetO+/F0hqLz4axJF4iOY4OUMt8mtmt8CHyr9iJpfcZeVGujMChuiI/h3ssdZF8PtPGarCOutSdWHodeJ3pIo0s6a1YeojKzm1WsDdYVZEf4hZ5neW6dBqLIQrwcYmks8wOaqnjrOG2pIeoF3ibkQPWSlFVkR+hcFFxttGY3ag+x4yWpPZjx1pMWtw3gU+TbBhCJPDvsqICh+qKHDQuD2NpdVZsPGXkYg+1wC6h7wK/PPz/EdyW9CYS+EqXmSqLHKb7NRsnhwPc7q8Bmg57F/gOSUt6k5K7q6ZlVVehZaWx7AyUkGj98wXgM57O+S7wAaMAmMvmAPhP9Px7TLbYdcfnm6yIN1saTprIjUk2UG/ubfxXgB3K5RX2P6gyazC7h9ehQgKHanfXayw/CkrZ2UBCbBRw7iYaC99fwLmzMsv9FcpXMXmhyiK3Xko6goLPfafA82chcn9tx9L7rJi7alqqLPIq/zZf3EFzxr0Czt0BrlHeKcuX0FRaiCztF5ET1cob2uJUubX7iGTh3V18NkrNHhrWRPH3Lno67/Xh37IY3lxsAK+iyugWo11/KkeVRX4L+CfkANNA3bEbWGDHOOPr7K9P/VQ2yipwGJWByE21kgKHaoscVMhuAn+N5krBBG6cMKou8giLCmOcWMw4ZRgVx0RuGBXHRG4YFcdEbhgV56QY3ozpnEPTSL7myEEOJjeAB5DPeFkZn8cv85x+LkzkJ5sa8i3v43/L6R5+N7n0zQaKBLM7fF2joj4U1l0/2ZwGvkgxe8o30I42Zdy5Zg34JVS5NdC68stUUOBgIjdOHjXgcyRjuTWB5xedmUVgIj/ZHKAFKt0Czr2LusBlckTaRGW+h3v13S7ZdlspNTYmP9kcoZ1Cnh6+f4j8XfcQGd2gXMasGhL4dWYvr+2gbvzKx3aLMJEb4y3tzeHLF2UR+Braq/w67nBPcXporP4+5Z4dSIV11/2ywcjQVBu+N5ZLtKXR6yQFvoumEFskgzz2gPNUIE6/idwfG6hn9BUUM+0rWE9p2WwigV8mue3RLvACCjj5NcfxAHgDDWdWWugmcn9sAM+hsEKN4d/nKDa8kjGbAyTwZiy9hwQe9bSOUVc+/rn6MP0M5ZwKTIWJ3C/BPd4bi+VZksLto/n7NZLz4ldw7592HdkuVjL+m4ncqCLRxoWdWHqINlm4jdtyHkWv7cXS66hHcMwK2llM5EbViLzZOo5jDeA9pod6OkTd8qdIxmZvsqJecSZyo0qs4fZmA4n037j33He0f1qT5F56TeDF7NlbDiZyoypE7qo9kraQXTTeTtsKHyBnmB3HsTYaCqwMJnKjCsxyV+0yaUlPyzHwLdy7rXRYIfdXE7mx6tTQFJfLXbWPxOiypKfhELfFnWHao6yAxd1Ebqwys9xVBygQxjRLeloii3vXcayHhgilnkM3kRurSuSu+iZuf/Q2aonzbppwiDwXv+Q4FiChb1NirzgTubGKbDByV21M+UyIv1Vkd5i+UCWg5O6vJnJjFTlE6+CbMz7T9ni9M8AfzTheR0OGUq5VKGWmjEI5YLnutgfkW4JaAz6FVo7Noo6/gBhByut9GfhjSrYO3URePEWI6i6jjfrmoeE5H/MSAleBH5Pdc+w0s1vwcVrcW5w+2UFbIpcKE3mxNAo6bx/4ezRWnGVYGsTeN1i+0HeRGN4ie2io0FNefDNYdgZcmMj9cYekv3ODYoX++RnHzyHLb7Og6+ehheK/ZSEEXkO/q+4lN34IkR0goGSVkG+R36GktVkOwtj7/pTP7aGCO6CYEMdx6mgeeNqe4reQI0eLcokB8peRO+i3X6I8y3m7zB8XbuBICz3kZYJT58+f931OgHcZFawQtWY3KVkNl5L7Ud6D4fsm2u/c1dWsAY+gB75deM50j2/MOP4AEsSrlKdF76FVXh+TL5LrOuWasjoG9jN8721Gvb0uo6Ca3ihC5NHWONG2O+8ga2qpLI5zUENeVY8zGYl01uf3UEGuF5ivPum6vFHE1LPoNyyTd1G4pUruVJKBuFauM3Ly8UZRLbmhMfGpAs+f1cJunDDM8FYcJkCjFJjHm2FUHBO5YVQcE7lhVBwTuWFUHBO5YVQc39b1DVYwLrVhlIzQ58l8i/wQ+HUW4+1lGFWkQ8lFDnKfbBRwXsM4CfTwu320jckNo+qYyA2j4hTRXe8XcE7DOCmEvk9oC1QMo+JYd90wKo6J3DAqjoncMCqOidwwKo6J3DAqjoncMCqOidwwKk7RMd6i/aOPUGhj12YAUdzwKMppUZxG4Ykf494RV8vAJtod5TEUDvod4MNlZggFp4xi10X5irOo5zlODe1DPquc/QB4H0WvvUtx0YPX0UpMXzH+PgF8lOcERYk8esA/jYL77zB7ZVp3+LoCbJEtfvUszg2v3x3+DYf5+gvKGSq6hvL5BpNhnVsohvqiWUOFd4d0C5C6jJ5nkWKPzv0IujcNZpezwTBfLyPB+w4NvYZ2QG3jJxx3iBas5HrmRXi8rQGfBv6A+QP6DxhtoRPFC/fFN1AhHb/Wwx7P75sf4i6wTeCv8F8Ruogq3KfQEshgzu8P0D2fd2eRNGwiQV1h8rmmZRd4Af9xzuPlzAcPokopE0WIPGuBGKeDtsDx+QDGd6qIKDIuelZqwK+he+BiwGIrp8u4K+uQyXUKAe7WK0T3/fv4a9E3Uev9D7jLWZ9JH/D6lM91UDnzyf9OuVYe7ifHUM23yJ/FXThD1E3qMbn/UwPVenXHd/pobOWrS7UqIodkKx4yWXCaTN+qyRc14BdI7u/dR70t1x5s96Ote1ux9BB4iPxbI40zvhVXRBvtSf6B4/MXUdncdnzH53bDd2PvB0yvsO9FiHZ//Xdy9Gp9iXwL+EXcG753gOfRjR833Kwjo8Ks7uAu6lL5YBVEXgOeQJVhRB/dm92xtC4F7JnlIN4qRdedNs6OKuTnmczv+HfzMq2nUwfeQyJzNQo1NJt0g6TQ6/gzxsZF3gOeJHvrHubIC+BnCm0dGfA6jmNN1B2KaqFxi+MRo3Hl3yABhrHvt1ANvOUhn6vAHsmucYdk5bkDXED3vgi2UMUbxNKbqLWe1hpH4nqVZJ4bXnKma7diabtIpNMEHn3vY9zj5QbF744aZnzlxofIj9BDDWLpHWQUiT4zi2NknNlxHGuyGCNTGThL8h5cReGAurH0L5JsNXyxRrIr3EOVtKsrHGeLpBCDnHkapx5730Ut9b2GdXuoMujE0rfRdGUlySvyddSiNGPpIfAl5mtpjtE4rxNL38mUs9VjC3iGZPc4murpxj7fYrHTf/U5PrsP/Bca70Z0KC6Sbx0N/dKwjoYTg7G0jt/slIu8Ij+DCmacXdR6z2ssWEMPIBxLG2TI1yqyT7L16zJqoa4yeV8CZOgMis7Y2PWeGuYnDYfIoLXDaNi2VkC+GJ7/FukalSPkFPUFdL8fBL6H3+naUpFX5K4xJMBrZDNqHaMH0EQFeoAeRJDhXKtEDXmQ1WPpVxmNfz8k2Zo3KSBcEHoGfUd6B01dQXqxv8Uo32m6+mnox97X0VTfGdLlax/1kK4AP6bCAof8Ij9LsmAO0A3MeuP2kSX8k2g+uE8xBblM3CbZineYnBvdwm3Megj/LeQeckgaxNID9DwuMxL7Opo1mXUun9s4b5G03IMqvO8gy/vZsc/Oat1D/Hq8lZK8In/ckdbPeU6YrPFPwj7fayRtD10mxbOPW3gtipkKdBnPIproOf8Q+Dojaz9IVGlb+Szsoxa47zi2jSrHD1BD8bvAz44dn1UZlY0anu5jnnnyc+jhdmLpbVTTlk2cZZ0nd837hqgnE2cN+CqT4pv2WV9Mc3ByMWDk9HQN5fc+/LeWW2ja9jrpDYJRvq6inmZAMT3E+IxHSLaGb4Du+7fJ6UCUR+QBMpK1Y+ltNKUWZj1xQZRV5JD03uoAv01yyLMOPEqy0DQpzgNuA/gsqrgbc3wvHH7nFbIZYe9F5JDzIvPbbXqonF7H/yIVn9OaIR4qcFtPvlzW0Ji6HkvfRUakOEdonrcfS29SnIvrIfI7fxKJvEO6CjxAQroJ/MYwzecUWvR7v4os5C3St5gNJPS30TMoyuqfl9DHSYpeT27M5hTJce+A2S6WWyTdXBuosvgRxcydR4L6F9T6XULTaQ1UQTVmfDdg1N2/Mv1jmTkcvv4M9SAvAD/PaE3E9ozvNtDvaSChF1FRDsg2Dz8A/g4PS3XzinyQ8/snnSPcbqyzHuw+sm7vxtJbwO95y9n0a0e8NXxF+YxEv4NbWB3U0vpcjebK2/vIHhBVKA8N8xTlLU4djdefLCBPII28xPzTwHfwdJ/ydNdD3CIPUAbzcD+jrl2RltplEuB2Zukg8QdTXjVkPe7Gvtdksd3OPSYL4VuoknkYVTih4ztdFhMtZvzaN9E9fRpVPj3H5xvIvlTkGolwzpe3+5S3JX/HkVYnXwZrjApKgMZ1A8pnrc9LiNuRyJXmInC8fwZ/BrgNRuXjDun8wqPvvYrE1I99ZhstOHItU52HaDXj+KrGWUSf+W/UYrvWyO+wnKg7heNjqakrgkleq/W4JbyPO2ZXnnNGLMu6vg78JPAfns/bx8+9CpBDyZeH719EY/15rdCvkLQ5tFBXOsyaOdQDaqCewTfnzFcN+bm7ru+jPExbaro08lrX13CvIX+KbJbUyL2zMZZWz3CesnOXkYB8Ukf3L+8QJwTeRIJsoRZuXoHXcHeNg8y50jmj2ANNVPZ+gvm62ZEHnitvlcSHdX0Xd219LcO5XGuFBxnOU3aOSRqBBsz/WwOSlWCL/CGN4tN6TSSsb5Fe7Hu4W0tXWlr2SPbGXmfJLWXZySvyY2TY6DF58xto7PWPpJ/SqSF/6GYsvYv/oI7LJAqrtB1Lb5Ntiik+XNpBy3zzhG++6UhrM5+Ytpge1ivr2u2AZEXYQGVtngoI3OvlK4kPZ5gN3D7OXeBzpLP4RqF5uo5jL1NccIRlMG3l3tUM53INlwJkgMtrKe7E3jeQmNIMBdZwL50NkdEta4V9gPs+tZHA05S1NdyzGl0qGoHIh8gPkfNGO5YeoNrxV4bvXYsDNod/n8Ade6uNlgKWLTZ6nh7QBZJd9Q7ZWt5TuFdktcgXTadG8nmChPAEs+0tG6jndZnk89wl3zTfEZoH78TSG8PrrTF9EUp03Z8jec/C4feLjEAUZHzl9hL0Ha11WvjePiNniB+gm/o4KgRN3B5TPfyOtVzW9V6G8wyYf3waUQOeI1nIdoC/JXshc0UurZMv3vkG8FtMr0Rew10xPYsqiO1Yeh8/lv/14cvVKPRReXJ5DD40zFfTcayJv402fEZrBf2mcaejufEp8ihG+jShz0MPWVEPKTbueh4eRL2MeYUeF+SAfHHUp0UvbeNnNeCs59lnZEgLmD4T0kdd/dv4iaUW2W96uK31IZNz9PUpnwP9Np/utkUMLdvAn5JR6D4XqBwjoV9iusfTvQgZGXh8CnwN/4aVB8j2QIPY+w75prz2UCEdOI7l2kMLDacuMT0CTR1VnA2mC7yDX4GDfvMAtc49x/FgLF8N3AIfoB6Ub3/6vufzgXost7N+2fcqtEiUX0cPoEW6Hz1Arc7PoFVF4+fywX3IMaND/pU9ffS7bjC/ASkguRb8ZfJ7qMUDPPg6byTKv2TU3R2k+F7IaCODKCS372iot5AnXrQ6rpvye31UaT2Mhkg+qTGav/dByGgxkmtVYiqK2CZpnGihxVk0Bq8zWav2Ga26isL0FDVVVqZpuAvoflzD74aAUZy4K/jfODJyc91D+f8MyefZQwUzep5nWIyv+rh760WSQ4fB8BXtDFvEppoRRWzwGO3Im4miRR4niL33ttJmBUnrdz0PvrfNvRdB7P0+5ZgJqZGcAQmXkI9SsOj15OGCr1dmihBiERFYZhEu8FrzcFIbDicWGcYwKo6J3DAqjoncMCqOidwwKo6J3DAqjoncMCqOidwwKo6J3DAqjoncMCqOidwwKo6J3DAqjoncMCqOidwwKs7/ARK5s31WJwlbAAAAAElFTkSuQmCC" alt="PlexiClass" style="height:40px;width:auto;filter:invert(1) brightness(2);margin:0 auto 0.5rem;"></div>
+    <p>Fabricant de produits en plexiglass &mdash; Maroc</p>
+    <small>&copy; 2025 PlexiClass. Tous droits r&eacute;serv&eacute;s.</small>
+  </footer>
+
+  <!-- WA MODAL -->
+  <div id="wa-modal">
+    <div class="wa-modal-box">
+      <div class="wa-modal-head">
+        <div>
+          <h3>Demande d&#x2019;information</h3>
+          <p id="modal-product-name">Produit</p>
+        </div>
+        <button class="wa-modal-close" onclick="closeWaModal()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="wa-modal-body">
+        <form id="wa-form" onsubmit="submitWa(event)">
+          <div class="form-group">
+            <label>Votre Nom</label>
+            <input type="text" id="wa-name" required placeholder="Votre nom complet">
+          </div>
+          <div class="form-group">
+            <label>Message (optionnel)</label>
+            <textarea id="wa-message" placeholder="Bonjour, je souhaite avoir plus d&#x27;informations..."></textarea>
+          </div>
+          <button type="submit" class="btn-whatsapp">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+            Envoyer via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN ================= -->
+<div id="admin-view" style="display:none;">
+  <!-- Login -->
+  <div id="admin-login" class="admin-login-wrap">
+    <div class="admin-login-box">
+      <h2>Administration</h2>
+      <p class="sub">PlexiClass Dashboard</p>
+      <form onsubmit="handleLogin(event)">
+        <div class="admin-field">
+          <label>Mot de passe</label>
+          <input type="password" id="admin-password" required>
+          <p id="login-error" class="login-error">Mot de passe incorrect</p>
+        </div>
+        <button type="submit" class="btn-dark">Connexion</button>
+        <button type="button" class="btn-light" onclick="goPublic()">Retour au site</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="admin-layout" class="admin-layout" style="display:none;">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <h2>PlexiClass</h2>
+        <span>Dashboard</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-btn active" id="sb-apercu" onclick="switchTab('apercu')">&#128200; Aper&ccedil;u</button>
+        <button class="sidebar-btn" id="sb-apparence" onclick="switchTab('apparence')">&#127912; Apparence</button>
+        <button class="sidebar-btn" id="sb-categories" onclick="switchTab('categories')">&#128218; Cat&eacute;gories</button>
+        <button class="sidebar-btn" id="sb-produits" onclick="switchTab('produits')">&#128717; Produits</button>
+        <button class="sidebar-btn" id="sb-contact" onclick="switchTab('contact')">&#128222; Contact</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-gold-sm" onclick="goPublic()">Voir le site</button>
+        <button class="btn-ghost" onclick="handleLogout()">D&eacute;connexion</button>
+      </div>
+    </aside>
+    <main class="admin-main">
+      <div id="admin-toast"></div>
+
+      <!-- Apercu -->
+      <div id="tab-apercu" class="admin-tab active">
+        <div class="admin-title">Aper&ccedil;u</div>
+        <div class="stat-cards">
+          <div class="stat-card"><h3>Cat&eacute;gories</h3><p id="stat-cats">0</p></div>
+          <div class="stat-card"><h3>Produits</h3><p id="stat-prods">0</p></div>
+        </div>
+      </div>
+
+      <!-- Apparence -->
+      <div id="tab-apparence" class="admin-tab">
+        <div class="admin-title">Apparence</div>
+        <div class="admin-card">
+          <div class="admin-card-title">Section H&eacute;ro</div>
+          <form onsubmit="saveSettings(event)">
+            <div class="form-row"><label>Badge</label><input type="text" id="set-badge"></div>
+            <div class="form-row"><label>Titre</label><input type="text" id="set-title"></div>
+            <div class="form-row"><label>Sous-titre</label><textarea id="set-subtitle" rows="3"></textarea></div>
+            <button type="submit" class="btn-save">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div id="tab-categories" class="admin-tab">
+        <div class="admin-title">Cat&eacute;gories</div>
+        <div class="admin-card">
+          <div class="admin-card-title" id="cat-form-title">Ajouter une cat&eacute;gorie</div>
+          <form onsubmit="saveCategory(event)">
+            <input type="hidden" id="cat-edit-id">
+            <div class="form-row"><label>Identifiant (ex: plateaux)</label><input type="text" id="cat-slug" required></div>
+            <div class="form-row"><label>Nom affich&eacute;</label><input type="text" id="cat-name" required></div>
+            <div class="form-row"><label>Description</label><textarea id="cat-desc" rows="2"></textarea></div>
+            <div style="display:flex;gap:0.6rem;">
+              <button type="submit" class="btn-save">Enregistrer</button>
+              <button type="button" class="btn-cancel" onclick="resetCatForm()">Annuler</button>
+            </div>
+          </form>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Nom</th><th>Description</th><th>Actions</th></tr></thead>
+            <tbody id="cat-list"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Produits -->
+      <div id="tab-produits" class="admin-tab">
+        <div class="admin-title">Produits</div>
+        <div class="table-toolbar">
+          <select id="prod-cat-select" class="form-row" style="margin:0;padding:0.5rem 0.8rem;border:1px solid #d1d5db;border-radius:6px;min-width:200px;" onchange="renderAdminProds()"></select>
+          <button class="btn-add" onclick="openProdModal()">+ Ajouter un produit</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th style="width:60px">Image</th><th>Nom</th><th>Description</th><th>Actions</th></tr></thead>
+            <tbody id="prod-list"></tbody>
+          </table>
+          <div id="prod-empty" class="empty-state">Aucun produit dans cette cat&eacute;gorie.</div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div id="tab-contact" class="admin-tab">
+        <div class="admin-title">Contact</div>
+        <div class="admin-card" style="max-width:500px;">
+          <form onsubmit="saveContact(event)">
+            <div class="form-row"><label>Email</label><input type="email" id="set-email"></div>
+            <div class="form-row"><label>WhatsApp 1</label><input type="text" id="set-wa1"></div>
+            <div class="form-row"><label>WhatsApp 2</label><input type="text" id="set-wa2"></div>
+            <div class="form-row"><label>Instagram URL</label><input type="text" id="set-ig"></div>
+            <div class="form-row"><label>Facebook URL</label><input type="text" id="set-fb"></div>
+            <button type="submit" class="btn-save">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="admin-prod-modal">
+    <div class="prod-modal-box">
+      <div class="prod-modal-head">
+        <h3 id="prod-modal-title">Ajouter un produit</h3>
+        <button onclick="closeProdModal()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <div class="prod-modal-body">
+        <form id="prod-form" onsubmit="saveProd(event)">
+          <input type="hidden" id="prod-idx">
+          <div class="form-row"><label>Nom du produit</label><input type="text" id="prod-name" required></div>
+          <div class="form-row"><label>Description</label><textarea id="prod-desc" rows="4" required></textarea></div>
+          <div class="form-row">
+            <label>Image (optionnel)</label>
+            <div class="img-preview-wrap">
+              <div class="img-thumb" id="img-thumb"><span>Aucune</span></div>
+              <div class="file-input-label">
+                <input type="file" id="prod-img-input" accept="image/*" onchange="handleImg(event)">
+                <p style="font-size:0.72rem;color:#9ca3af;margin-top:0.3rem;">JPG/PNG, max 2MB</p>
+              </div>
+            </div>
+            <input type="hidden" id="prod-img-b64">
+          </div>
+        </form>
+      </div>
+      <div class="prod-modal-foot">
+        <button class="btn-cancel" onclick="closeProdModal()">Annuler</button>
+        <button class="btn-save" onclick="saveProd(event)">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var DEFAULT_CATEGORIES = [
+  {id:"presentoirs",name:"Pr\u00e9sentoirs",desc:"Pr\u00e9sentoirs et \u00e9tag\u00e8res en acrylique pour cosm\u00e9tiques, parfums et produits en point de vente.",products:[
+    {name:"Pr\u00e9sentoir de Comptoir Noir Laqu\u00e9 3 Niveaux",desc:"Pr\u00e9sentoir vertical trois \u00e9tages en acrylique noir brillant. Finition premium avec marquage dor\u00e9 personnalis\u00e9. Id\u00e9al pour mise en valeur les produits cosm\u00e9tiques en point de vente."},
+    {name:"Pr\u00e9sentoir Vernis 5 Niveaux",desc:"Pr\u00e9sentoir vertical transparent \u00e0 5 \u00e9tages pour vernis et flacons. Design \u00e9pur\u00e9, id\u00e9al salons et boutiques."},
+    {name:"Escalier Transparent",desc:"Trois pi\u00e8ces basses encastrables en acrylique. Design a\u00e9rien, finition bords arrondis."},
+    {name:"\u00c9tag\u00e8re Organique Noire",desc:"\u00c9tag\u00e8re double niveau en acrylique noir aux formes fluides."},
+    {name:"\u00c9tag\u00e8re 2 Niveaux Transparent et Noir",desc:"Design nordique pour cosm\u00e9tiques et parfums."},
+    {name:"Pr\u00e9sentoir Parfums 3 Niveaux",desc:"Exposition gradu\u00e9e transparente. Transparence cristalline pour flacons luxueux."},
+    {name:"Vitrine Comptoir 3 Niveaux",desc:"Pr\u00e9sentoir professionnel avec dossier arrondi. Pour parfums et maquillage en point de vente."},
+    {name:"Pr\u00e9sentoir Inclin\u00e9 3 Niveaux",desc:"Face inclin\u00e9e optimisant la visibilit\u00e9 client. Prise en main facile, usage intensif."},
+    {name:"\u00c9tag\u00e8re Contrast 2 Niveaux",desc:"Acrylique transparent et noir. Fixations dor\u00e9es, design contemporain."},
+    {name:"Escalier Blanc 3 Pi\u00e8ces",desc:"Blanc brillance, design \u00e9pur\u00e9 et modulable."},
+    {name:"\u00c9tag\u00e8re 2 Niveaux Design",desc:"Design \u00e9pur\u00e9 pour cosm\u00e9tiques et parfums."}
+  ]},
+  {id:"box",name:"Box et Vitrines",desc:"Bo\u00eetes et vitrines acryliques pour cadeaux, troph\u00e9es et collections.",products:[
+    {name:"Vitrine \u00c9l\u00e9gance Noyer",desc:"Vitrine cube acrylique, socle noyer massif. Personnalisable plaque grav\u00e9e."},
+    {name:"Bo\u00eete Aura Laiton",desc:"Bo\u00eete rectangulaire acrylique, finition laiton satin\u00e9. Poign\u00e9e en bois, int\u00e9rieur \u00e9l\u00e9gant."},
+    {name:"Collection Prisme",desc:"Set 3 vitrines cubes tailles gradu\u00e9es. Socles blancs, angles nets."},
+    {name:"Trio Essence",desc:"3 vitrines acrylique, plateaux bois noir, ch\u00eane, noyer."},
+    {name:"Coffret C\u00e9r\u00e9monie",desc:"Bo\u00eete acrylique, couvercle blanc personnalisable. Pour souvenirs de mariage."},
+    {name:"Vitrine Puret\u00e9 Blanche",desc:"Cube acrylique, socle blanc laqu\u00e9. Lignes \u00e9pur\u00e9es."},
+    {name:"Plateau Jardin de Luxe",desc:"Vitrine bijoux, velours bleu, roses blanches."},
+    {name:"Distributeur Fra\u00eecheur",desc:"Bo\u00eete conservation pain, trappe inclin\u00e9e sur charni\u00e8res."},
+    {name:"Cloche Bambou",desc:"Cloche p\u00e2tisserie acrylique, support bambou. Ouverture frontale."}
+  ]},
+  {id:"chariot",name:"Chariots et Dessertes",desc:"Dessertes et chariots en acrylique transparent sur roulettes.",products:[
+    {name:"Desserte Cristal 3 Niveaux",desc:"Desserte acrylique transparente, 3 \u00e9tages sur roulettes."},
+    {name:"Desserte Ambre 2 Niveaux",desc:"Desserte acrylique, panneaux ambre, 2 \u00e9tages sur roulettes."},
+    {name:"Desserte Pure 2 Niveaux",desc:"Desserte acrylique 100% transparente, 2 \u00e9tages sur roulettes."},
+    {name:"Desserte Service 2 Niveaux",desc:"Id\u00e9ale pour bar, salon ou chambre."}
+  ]},
+  {id:"capsule",name:"Porte Capsules",desc:"Organisateurs et pr\u00e9sentoirs \u00e0 capsules de caf\u00e9 en acrylique.",products:[
+    {name:"Organisateur Service \u00e0 Th\u00e9 Noir",desc:"Compartiments sup\u00e9rieurs pour tasses et th\u00e9i\u00e8re, tiroirs transparents pour p\u00e2tisseries."},
+    {name:"Bo\u00eete \u00e0 Capsules Transparente",desc:"Bo\u00eete carr\u00e9e avec couvercle clapet. Style \u00e9pur\u00e9 et minimaliste."},
+    {name:"Distributeur de Capsules 4 Niveaux",desc:"Tour de rangement acrylique transparent \u00e0 quatre niveaux."},
+    {name:"Support Capsules 4 Colonnes",desc:"Support mural avec fentes verticales pour rangement d\u00e9coratif."},
+    {name:"Distributeur Inclin\u00e9 Blanc",desc:"Pr\u00e9sentoir inclin\u00e9 en plexiglass blanc avec rang\u00e9es."},
+    {name:"Pr\u00e9sentoir Coffee Noir",desc:"Support capsule noir avec inscription Coffee. Design industriel chic."}
+  ]},
+  {id:"plateaux",name:"Plateaux",desc:"Plateaux en acrylique transparent, miroir dor\u00e9 et personnalis\u00e9s.",products:[
+    {name:"Plateau Acrylique Transparent Rectangulaire",desc:"Poign\u00e9es int\u00e9gr\u00e9es, finition bords arrondis."},
+    {name:"Plateau Acrylique Noir",desc:"Poign\u00e9es encastr\u00e9es, design minimaliste et \u00e9l\u00e9gant."},
+    {name:"Plateau Transparent Poign\u00e9es Dor\u00e9es",desc:"Plateau cristal avec poign\u00e9es plexi dor\u00e9es. Finition premium."},
+    {name:"Plateau Inclin\u00e9 Poign\u00e9es Dor\u00e9es",desc:"Grand plateau, poign\u00e9es dor\u00e9es. Lignes \u00e9pur\u00e9es."},
+    {name:"Duo Plateaux Poign\u00e9es Dor\u00e9es",desc:"Duo de plateaux cristal avec poign\u00e9es dor\u00e9es."},
+    {name:"Plateau Fond Miroir Dor\u00e9",desc:"Grand plateau cristal avec fond miroir dor\u00e9. Effet luxueux."},
+    {name:"Plateau Calligraphie Dor\u00e9e",desc:"Inscription calligraphique dor\u00e9e personnalisable."},
+    {name:"Plateau Miroir Dor\u00e9 Service Th\u00e9",desc:"Format moyen. Id\u00e9al pour service \u00e0 th\u00e9 ou p\u00e2tisserie."},
+    {name:"Plateau Miroir Dor\u00e9 Petit Format",desc:"Format carr\u00e9, parfait pour tasses \u00e0 caf\u00e9 ou bijoux."},
+    {name:"Plateau Transparent Givr\u00e9",desc:"Acrylique givr\u00e9 transparent. Design discret et sophistiqu\u00e9."},
+    {name:"Set Ap\u00e9ritif Acrylique et Dor\u00e9",desc:"Duo plateaux poign\u00e9es d\u00e9coratives dor\u00e9es ajourn\u00e9es."},
+    {name:"Plateau Service Rectangulaire",desc:"Acrylique cristal avec poign\u00e9es int\u00e9gr\u00e9es."},
+    {name:"Set de Table Festif Contour Ondul\u00e9",desc:"Bords ondul\u00e9s, double liser\u00e9 blanc et dor\u00e9."},
+    {name:"Pr\u00e9sentoir Ramadan Arche Noire et Dor\u00e9e",desc:"Acrylique noir avec arche d\u00e9corative dor\u00e9e. Design festif."},
+    {name:"Plateau Poign\u00e9es Plexi Dor\u00e9",desc:"Design \u00e9pur\u00e9, alliage acrylique pour une touche contemporaine."}
+  ]},
+  {id:"fleurs",name:"Bo\u00eetes Fleurs",desc:"Bo\u00eetes cadeaux acryliques pour roses \u00e9ternelles et compositions florales.",products:[
+    {name:"Bo\u00eete Rose \u00c9ternelle Rouge et Chocolats",desc:"Cube transparent deux niveaux. Rose \u00e9ternelle rouge + 4 chocolats dor\u00e9s."},
+    {name:"Bo\u00eete Roses \u00c9ternelles Jaunes et Chocolats",desc:"Quatre roses jaunes + 8 chocolats dor\u00e9s. Cadeau lumineux et festif."},
+    {name:"Sac \u00e0 Fleurs Acrylique Poign\u00e9e Dor\u00e9e",desc:"Acrylique cristal avec poign\u00e9e m\u00e9tallique dor\u00e9e. Design \u00e9l\u00e9gant."}
+  ]},
+  {id:"gateaux",name:"Bo\u00eetes G\u00e2teaux et Chocolat",desc:"Bo\u00eetes de pr\u00e9sentation en acrylique pour g\u00e2teaux et chocolats de luxe.",products:[
+    {name:"Bo\u00eete P\u00e2tisserie Base Noire",desc:"Transparente base noire, poign\u00e9e boule. Id\u00e9ale pour g\u00e2teaux et macarons."},
+    {name:"Bo\u00eete Chocolats Carr\u00e9e Poign\u00e9e Dor\u00e9e",desc:"Transparente avec poign\u00e9e boule dor\u00e9e. Pour chocolats fins et truffes."},
+    {name:"Bo\u00eete P\u00e2tisserie Rectangulaire Poign\u00e9e Dor\u00e9e",desc:"Cloche rectangulaire avec poign\u00e9e dor\u00e9e."},
+    {name:"Bo\u00eete Chocolats Bordure Dor\u00e9e",desc:"Bords et poign\u00e9e dor\u00e9s. Pour chocolats fins et confiseries."},
+    {name:"Bo\u00eete Chocolats Deux \u00c9tages Poign\u00e9es Dor\u00e9es",desc:"2 niveaux avec poign\u00e9es dor\u00e9es. Grande capacit\u00e9."},
+    {name:"Bo\u00eete P\u00e2tisseries Orientales Poign\u00e9e Dor\u00e9e",desc:"Pour cornes de gazelle, ghriba, baklava et p\u00e2tisseries orientales."}
+  ]},
+  {id:"compartiment",name:"Bo\u00eetes \u00e0 Compartiments",desc:"Bo\u00eetes organis\u00e9es avec compartiments pour chocolats et sachets de th\u00e9.",products:[
+    {name:"Bo\u00eete 6 Compartiments Amovibles",desc:"Rectangulaire, 6 cases amovibles. Pour assortiments de chocolats."},
+    {name:"Bo\u00eete 9 Compartiments",desc:"9 cases fixes. Pour assortiments de chocolats fins."},
+    {name:"Bo\u00eete 25 Compartiments avec Couvercle",desc:"Couvercle rabattable. Design professionnel pour chocolatiers."},
+    {name:"Bo\u00eete P\u00e2tisseries Orientales 9 Compartiments",desc:"Pour cornes de gazelle, ghriba, dattes et fruits secs."},
+    {name:"Bo\u00eete 4 \u00c9tages Tiroirs Coulissants",desc:"4 niveaux coulissants. Grande capacit\u00e9 pour chocolats."},
+    {name:"Bo\u00eete Sachets de Th\u00e9 6 Compartiments",desc:"6 compartiments avec couvercle. Pour sachets de th\u00e9 et infusions."},
+    {name:"Bo\u00eete 4 Compartiments Couvercle Coulissant",desc:"4 compartiments avec couvercle coulissant."}
+  ]},
+  {id:"mouchoir",name:"Bo\u00eetes \u00e0 Mouchoirs",desc:"Bo\u00eetes \u00e0 mouchoirs d\u00e9coratives en acrylique dor\u00e9 miroir, noir brillant et cristal.",products:[
+    {name:"Bo\u00eete Mouchoirs Acrylique Dor\u00e9e",desc:"Dor\u00e9 miroir. Finition premium pour bureau, salon ou salle de r\u00e9union."},
+    {name:"Support Mouchoirs Noir Design Inclin\u00e9",desc:"Noir mat, format inclin\u00e9. Design contemporain et minimaliste."},
+    {name:"Bo\u00eete Mouchoirs Noir Laqu\u00e9",desc:"Noir brillant, finition laqu\u00e9e premium."},
+    {name:"Bo\u00eete Mouchoirs Noir Personnalisable",desc:"Noir brillant avec socle. Personnalisable par gravure dor\u00e9e."},
+    {name:"Support Distributeur Mouchoirs Transparent",desc:"Inclin\u00e9 transparent. Ergonomique pour pr\u00e9l\u00e8vement facile."},
+    {name:"Bo\u00eete Mouchoirs Transparent Ferm\u00e9e",desc:"Cristal, design \u00e9pur\u00e9 et discret. Id\u00e9ale pour bureau."},
+    {name:"Bo\u00eete Mouchoirs Transparent Ouverte",desc:"Format ouvert sans couvercle. Design minimaliste et pratique."},
+    {name:"Bo\u00eete Mouchoirs Dor\u00e9e Personnalisable",desc:"Dor\u00e9 miroir, personnalisable par gravure. Pour restaurant ou h\u00f4tel."},
+    {name:"Bo\u00eete Mouchoirs Bordeaux",desc:"Teinт\u00e9 bordeaux, finition brillante. Design \u00e9l\u00e9gant."},
+    {name:"Bo\u00eete Mouchoirs Jaune",desc:"Tein\u00e9 jaune vif, finition brillante. Design color\u00e9 et moderne."},
+    {name:"Bo\u00eete Mouchoirs D\u00e9cor Abeille Cristal",desc:"Cristal avec motif abeille strass. Design raffin\u00e9 et d\u00e9licat."},
+    {name:"Bo\u00eete Mouchoirs D\u00e9cor Abeille Dor\u00e9e",desc:"Dor\u00e9 miroir avec motif abeille strass. Finition luxueuse."},
+    {name:"Organiseur 2 en 1 Mouchoirs et Maquillage",desc:"2 niveaux: compartiment mouchoirs + tiroir maquillage."}
+  ]},
+  {id:"support",name:"Supports et Porte-Affiche",desc:"Porte-affiches, porte-menus, porte-noms et supports documentaires en acrylique cristal.",products:[
+    {name:"Porte-Affiche Transparent Format A4",desc:"Socle int\u00e9gr\u00e9, format vertical A4. Design minimaliste et professionnel."},
+    {name:"Porte-Menu Transparent Format A4",desc:"Socle T, finition biseaut\u00e9e. Pour restaurant, caf\u00e9, h\u00f4tel."},
+    {name:"Porte-Affiche Bicolore Noir et Transparent",desc:"Cadre transparent, socle noir. Design contemporain et \u00e9l\u00e9gant."},
+    {name:"Porte-Prix Acrylique Transparent",desc:"Inclin\u00e9, ergonomique. Pour bureau, r\u00e9ception ou \u00e9v\u00e9nement."},
+    {name:"Porte-Affiche et Cartes de Visite 2 en 1",desc:"Porte-affiche avec porte-cartes de visite int\u00e9gr\u00e9."},
+    {name:"Porte-Nom Format Long",desc:"Horizontal, support triangulaire. Pour bureau ou conf\u00e9rence."},
+    {name:"Porte-Menu Format Paysage",desc:"Inclin\u00e9, format paysage, double face visible."},
+    {name:"Porte-Flyer Format Paysage",desc:"Horizontal, support inclin\u00e9. Pour bureau ou conf\u00e9rence."},
+    {name:"Porte-Documents Mural",desc:"Fixation murale. Pour bureau, salle d\u2019attente ou accueil."},
+    {name:"Support Tablette et T\u00e9l\u00e9phone",desc:"Inclin\u00e9, support arri\u00e8re r\u00e9glable. Pour bureau ou cuisine."},
+    {name:"Support Huilier 4 Compartiments",desc:"4 compartiments avec poign\u00e9e. Pour huile, sel, poivre."},
+    {name:"Porte-T\u00e9l\u00e9commandes 3 Compartiments",desc:"3 compartiments verticaux. Pour salon, chambre ou h\u00f4tel."}
+  ]},
+  {id:"urne",name:"Urnes",desc:"Urnes en acrylique cristal pour mariages, \u00e9v\u00e9nements et collecte de dons.",products:[
+    {name:"Urne Acrylique Transparente avec Fermeture",desc:"Cube cristal avec porte et fermoir m\u00e9tallique. Protection et visibilit\u00e9 optimales."},
+    {name:"Urne Mariage Personnalisable",desc:"Fermoir dor\u00e9, fente pour enveloppes. Personnalisable par gravure."},
+    {name:"Urne Acrylique Fermeture S\u00e9curis\u00e9e",desc:"Design minimaliste et s\u00e9curis\u00e9 pour mariage, anniversaire ou collecte."}
+  ]}
+];
+
+var DEFAULT_SETTINGS = {badge:"Fabricant \u00b7 Plexiglass Premium \u00b7 Maroc",title:"L\u2019art du Plexiglass sur mesure",subtitle:"D\u00e9couvrez notre gamme compl\u00e8te de solutions en acrylique de haute qualit\u00e9, fa\u00e7onn\u00e9es avec pr\u00e9cision pour vos projets professionnels et d\u00e9coratifs."};
+var DEFAULT_CONTACT = {email:"Plexi.classe404@gmail.com",wa1:"+212 664 222 844",wa2:"+212 684 155 007",ig:"https://instagram.com/plexiclass404",fb:"https://facebook.com/plexiclass404"};
+
+// STATE
+var data = {
+  categories: JSON.parse(localStorage.getItem("plexiclass_cats")) || DEFAULT_CATEGORIES,
+  settings: JSON.parse(localStorage.getItem("plexiclass_settings")) || DEFAULT_SETTINGS,
+  contact: JSON.parse(localStorage.getItem("plexiclass_contact")) || DEFAULT_CONTACT
+};
+var currentCat = null;
+var currentProd = null;
+var searchQ = "";
+var filterCatId = "all";
+
+// SAVE
+function save() {
+  localStorage.setItem("plexiclass_cats", JSON.stringify(data.categories));
+  localStorage.setItem("plexiclass_settings", JSON.stringify(data.settings));
+  localStorage.setItem("plexiclass_contact", JSON.stringify(data.contact));
+}
+
+// ROUTING — fixed: use style.display not classList
+function handleRouting() {
+  if (window.location.hash === "#admin") {
+    document.getElementById("public-view").style.display = "none";
+    document.getElementById("admin-view").style.display = "block";
+    checkAuth();
+  } else {
+    document.getElementById("admin-view").style.display = "none";
+    document.getElementById("public-view").style.display = "block";
+  }
+}
+
+function goPublic() {
+  window.location.hash = "";
+  document.getElementById("admin-view").style.display = "none";
+  document.getElementById("public-view").style.display = "block";
+}
+
+// INIT
+function init() {
+  applySettings();
+  applyContact();
+  renderPublicCats();
+  setupSearch();
+  setupMobileMenu();
+  setupScrollNav();
+  setupFadeUp();
+  handleRouting();
+  window.addEventListener("hashchange", handleRouting);
+}
+
+// APPLY
+function applySettings() {
+  var s = data.settings;
+  document.getElementById("hero-badge").textContent = s.badge;
+  document.getElementById("hero-title").innerHTML = s.title.replace("Plexiglass","<em>Plexiglass</em>");
+  document.getElementById("hero-subtitle").textContent = s.subtitle;
+}
+
+function applyContact() {
+  var c = data.contact;
+  document.getElementById("contact-email").textContent = c.email;
+  document.getElementById("contact-email-link").href = "mailto:" + c.email;
+  document.getElementById("contact-wa1").textContent = c.wa1;
+  document.getElementById("contact-wa1-link").href = "https://wa.me/" + c.wa1.replace(/[^0-9]/g,"");
+  document.getElementById("contact-wa2").textContent = c.wa2;
+  document.getElementById("contact-wa2-link").href = "https://wa.me/" + c.wa2.replace(/[^0-9]/g,"");
+  document.getElementById("nav-ig").href = c.ig;
+  document.getElementById("nav-fb").href = c.fb;
+  document.getElementById("nav-wa").href = "https://wa.me/" + c.wa1.replace(/[^0-9]/g,"");
+  document.getElementById("mobile-ig").href = c.ig;
+  document.getElementById("mobile-fb").href = c.fb;
+  document.getElementById("mobile-wa").href = "https://wa.me/" + c.wa1.replace(/[^0-9]/g,"");
+}
+
+// RENDER CATEGORIES
+function renderPublicCats() {
+  var grid = document.getElementById("categories-grid");
+  var pillsEl = document.getElementById("filter-pills");
+
+  // Pills
+  var pHtml = "<button class=\"pill " + (filterCatId==="all"?"active":"") + "\" onclick=\"setFilter('all',this)\">Tout afficher</button>";
+  data.categories.forEach(function(cat) {
+    pHtml += "<button class=\"pill " + (filterCatId===cat.id?"active":"") + "\" onclick=\"setFilter('" + cat.id + "',this)\">" + cat.name + "</button>";
+  });
+  pillsEl.innerHTML = pHtml;
+
+  // Filter
+  var filtered = data.categories.filter(function(cat) {
+    var matchCat = filterCatId === "all" || cat.id === filterCatId;
+    var matchSearch = !searchQ || cat.name.toLowerCase().indexOf(searchQ) > -1 ||
+      cat.products.some(function(p){ return p.name.toLowerCase().indexOf(searchQ) > -1; });
+    return matchCat && matchSearch;
+  });
+
+  document.getElementById("no-results").style.display = filtered.length === 0 ? "block" : "none";
+
+  var html = "";
+  filtered.forEach(function(cat) {
+    var imgHtml = cat.products[0] && cat.products[0].image
+      ? "<img src=\"" + cat.products[0].image + "\" alt=\"\">"
+      : "<div class=\"cat-thumb-placeholder\">" + cat.name.charAt(0) + "</div>";
+    html += "<div class=\"cat-card\" onclick=\"openCat('" + cat.id + "')\">";
+    html += "<div class=\"cat-thumb\">" + imgHtml + "</div>";
+    html += "<div class=\"cat-info\">";
+    html += "<div class=\"cat-card-top\"><span class=\"cat-card-title\">" + cat.name + "</span><span class=\"cat-badge\">" + cat.products.length + " produits</span></div>";
+    html += "<p class=\"cat-desc\">" + cat.desc + "</p>";
+    html += "<div class=\"cat-link\">Voir la collection <span class=\"cat-arrow\">\u2192</span></div>";
+    html += "</div></div>";
+  });
+  grid.innerHTML = html;
+}
+
+function setFilter(id, btn) {
+  filterCatId = id;
+  document.querySelectorAll(".pill").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  renderPublicCats();
+}
+
+function setupSearch() {
+  document.getElementById("search-input").addEventListener("input", function(e) {
+    searchQ = e.target.value.toLowerCase().trim();
+    renderPublicCats();
+  });
+}
+
+function clearSearch() {
+  searchQ = "";
+  document.getElementById("search-input").value = "";
+  renderPublicCats();
+}
+
+// LEVEL NAVIGATION
+function showLevel(n) {
+  document.getElementById("level-1").style.display = n===1 ? "block" : "none";
+  document.getElementById("level-2").style.display = n===2 ? "block" : "none";
+  document.getElementById("level-3").style.display = n===3 ? "block" : "none";
+  document.getElementById("catalog-section").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function openCat(id) {
+  currentCat = data.categories.find(function(c){ return c.id === id; });
+  if (!currentCat) return;
+  document.getElementById("l2-title").textContent = currentCat.name;
+  document.getElementById("l2-desc").textContent = currentCat.desc;
+  var html = "";
+  currentCat.products.forEach(function(p, i) {
+    var img = p.image ? "<img src=\"" + p.image + "\" alt=\"\">" : "<div class=\"prod-placeholder\">" + p.name.charAt(0) + "</div>";
+    html += "<div class=\"prod-card\" onclick=\"openProd(" + i + ")\">";
+    html += "<div class=\"prod-img\">" + img + "</div>";
+    html += "<div class=\"prod-info\">";
+    html += "<div class=\"prod-name\">" + p.name + "</div>";
+    html += "<p class=\"prod-desc-short\">" + p.desc + "</p>";
+    html += "<button class=\"prod-btn\">Voir le produit</button>";
+    html += "</div></div>";
+  });
+  document.getElementById("products-grid").innerHTML = html;
+  showLevel(2);
+}
+
+function openProd(i) {
+  if (!currentCat) return;
+  currentProd = currentCat.products[i];
+  if (!currentProd) return;
+  document.getElementById("detail-cat").textContent = currentCat.name;
+  document.getElementById("detail-name").textContent = currentProd.name;
+  document.getElementById("detail-desc").textContent = currentProd.desc;
+  var imgEl = document.getElementById("detail-img");
+  imgEl.innerHTML = currentProd.image
+    ? "<img src=\"" + currentProd.image + "\" alt=\"\" style=\"width:100%;height:100%;object-fit:cover;\">"
+    : "<div class=\"detail-placeholder\">" + currentProd.name.charAt(0) + "</div>";
+  showLevel(3);
+}
+
+// WA MODAL
+function openWaModal() {
+  if (!currentProd) return;
+  document.getElementById("modal-product-name").textContent = currentProd.name;
+  document.getElementById("wa-form").reset();
+  document.getElementById("wa-modal").classList.add("open");
+}
+function closeWaModal() { document.getElementById("wa-modal").classList.remove("open"); }
+document.getElementById("wa-modal").addEventListener("click", function(e){ if(e.target===this) closeWaModal(); });
+
+function submitWa(e) {
+  e.preventDefault();
+  var name = document.getElementById("wa-name").value;
+  var msg = document.getElementById("wa-message").value;
+  var prod = currentProd ? currentProd.name : "";
+  var text = "Bonjour PlexiClass, je m\u2019appelle " + name + ". Je souhaite avoir des informations sur : *" + prod + "*";
+  if (msg) text += "\n\nMessage : " + msg;
+  var phone = data.contact.wa1.replace(/[^0-9]/g,"");
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(text), "_blank");
+  closeWaModal();
+}
+
+// MOBILE MENU
+function setupMobileMenu() {
+  document.getElementById("mobile-menu-btn").addEventListener("click", function() {
+    var m = document.getElementById("mobile-menu");
+    m.style.display = m.style.display === "block" ? "none" : "block";
+  });
+  document.querySelectorAll(".mobile-link").forEach(function(a) {
+    a.addEventListener("click", function() { document.getElementById("mobile-menu").style.display = "none"; });
+  });
+}
+
+function setupScrollNav() {
+  window.addEventListener("scroll", function() {
+    document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 20);
+  });
+}
+
+function setupFadeUp() {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } });
+  }, {threshold:0.1});
+  document.querySelectorAll(".fade-up").forEach(function(el){ obs.observe(el); });
+}
+
+// ===== ADMIN =====
+function checkAuth() {
+  if (sessionStorage.getItem("plexiclass_auth") === "true") {
+    document.getElementById("admin-login").style.display = "none";
+    document.getElementById("admin-layout").style.display = "flex";
+    loadAdminData();
+  } else {
+    document.getElementById("admin-login").style.display = "flex";
+    document.getElementById("admin-layout").style.display = "none";
+  }
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  if (document.getElementById("admin-password").value === "admin2025") {
+    sessionStorage.setItem("plexiclass_auth","true");
+    document.getElementById("admin-password").value = "";
+    document.getElementById("login-error").style.display = "none";
+    checkAuth();
+  } else {
+    document.getElementById("login-error").style.display = "block";
+  }
+}
+
+function handleLogout() {
+  sessionStorage.removeItem("plexiclass_auth");
+  checkAuth();
+}
+
+function loadAdminData() {
+  // Stats
+  var total = 0;
+  data.categories.forEach(function(c){ total += c.products.length; });
+  document.getElementById("stat-cats").textContent = data.categories.length;
+  document.getElementById("stat-prods").textContent = total;
+  // Apparence
+  document.getElementById("set-badge").value = data.settings.badge;
+  document.getElementById("set-title").value = data.settings.title;
+  document.getElementById("set-subtitle").value = data.settings.subtitle;
+  // Contact
+  document.getElementById("set-email").value = data.contact.email;
+  document.getElementById("set-wa1").value = data.contact.wa1;
+  document.getElementById("set-wa2").value = data.contact.wa2;
+  document.getElementById("set-ig").value = data.contact.ig;
+  document.getElementById("set-fb").value = data.contact.fb;
+  // Categories
+  renderAdminCats();
+  // Products
+  fillCatSelect();
+}
+
+function switchTab(id) {
+  document.querySelectorAll(".admin-tab").forEach(function(t){ t.classList.remove("active"); });
+  document.querySelectorAll(".sidebar-btn").forEach(function(b){ b.classList.remove("active"); });
+  document.getElementById("tab-" + id).classList.add("active");
+  document.getElementById("sb-" + id).classList.add("active");
+}
+
+function toast(msg) {
+  var t = document.getElementById("admin-toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 3000);
+}
+
+// Settings
+function saveSettings(e) {
+  e.preventDefault();
+  data.settings.badge = document.getElementById("set-badge").value;
+  data.settings.title = document.getElementById("set-title").value;
+  data.settings.subtitle = document.getElementById("set-subtitle").value;
+  save(); applySettings(); toast("Apparence sauvegard\u00e9e");
+}
+
+// Contact
+function saveContact(e) {
+  e.preventDefault();
+  data.contact.email = document.getElementById("set-email").value;
+  data.contact.wa1 = document.getElementById("set-wa1").value;
+  data.contact.wa2 = document.getElementById("set-wa2").value;
+  data.contact.ig = document.getElementById("set-ig").value;
+  data.contact.fb = document.getElementById("set-fb").value;
+  save(); applyContact(); toast("Contact sauvegard\u00e9");
+}
+
+// Categories admin
+function renderAdminCats() {
+  var html = "";
+  data.categories.forEach(function(cat) {
+    html += "<tr><td>" + cat.name + "</td><td class=\"muted\">" + cat.desc + "</td><td class=\"tbl-actions\">";
+    html += "<button class=\"btn-edit\" onclick=\"editCat('" + cat.id + "')\">Modifier</button>";
+    html += "<button class=\"btn-del\" onclick=\"deleteCat('" + cat.id + "')\">Supprimer</button>";
+    html += "</td></tr>";
+  });
+  document.getElementById("cat-list").innerHTML = html || "<tr><td colspan=\"3\" style=\"text-align:center;color:#6b7280;padding:1rem;\">Aucune cat\u00e9gorie</td></tr>";
+}
+
+function saveCategory(e) {
+  e.preventDefault();
+  var editId = document.getElementById("cat-edit-id").value;
+  var slug = document.getElementById("cat-slug").value.toLowerCase().replace(/[^a-z0-9]/g,"");
+  var name = document.getElementById("cat-name").value;
+  var desc = document.getElementById("cat-desc").value;
+  if (editId) {
+    var cat = data.categories.find(function(c){ return c.id===editId; });
+    if (cat) { cat.id=slug||editId; cat.name=name; cat.desc=desc; }
+  } else {
+    data.categories.push({id:slug||"cat"+Date.now(),name:name,desc:desc,products:[]});
+  }
+  save(); renderAdminCats(); fillCatSelect(); resetCatForm(); renderPublicCats();
+  toast("Cat\u00e9gorie sauvegard\u00e9e");
+}
+
+function editCat(id) {
+  var cat = data.categories.find(function(c){ return c.id===id; });
+  if (!cat) return;
+  document.getElementById("cat-form-title").textContent = "Modifier la cat\u00e9gorie";
+  document.getElementById("cat-edit-id").value = cat.id;
+  document.getElementById("cat-slug").value = cat.id;
+  document.getElementById("cat-name").value = cat.name;
+  document.getElementById("cat-desc").value = cat.desc;
+}
+
+function deleteCat(id) {
+  if (!confirm("Supprimer cette cat\u00e9gorie et tous ses produits ?")) return;
+  data.categories = data.categories.filter(function(c){ return c.id!==id; });
+  save(); renderAdminCats(); fillCatSelect(); renderPublicCats();
+  toast("Cat\u00e9gorie supprim\u00e9e");
+}
+
+function resetCatForm() {
+  document.getElementById("cat-form-title").textContent = "Ajouter une cat\u00e9gorie";
+  document.getElementById("cat-edit-id").value = "";
+  document.getElementById("cat-slug").value = "";
+  document.getElementById("cat-name").value = "";
+  document.getElementById("cat-desc").value = "";
+}
+
+// Products admin
+function fillCatSelect() {
+  var html = "";
+  data.categories.forEach(function(cat){ html += "<option value=\"" + cat.id + "\">" + cat.name + "</option>"; });
+  document.getElementById("prod-cat-select").innerHTML = html || "<option value=\"\">Aucune cat\u00e9gorie</option>";
+  renderAdminProds();
+}
+
+function renderAdminProds() {
+  var catId = document.getElementById("prod-cat-select").value;
+  var cat = data.categories.find(function(c){ return c.id===catId; });
+  var list = document.getElementById("prod-list");
+  var empty = document.getElementById("prod-empty");
+  if (!cat || cat.products.length === 0) {
+    list.innerHTML = "";
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+  var html = "";
+  cat.products.forEach(function(p, i) {
+    var imgHtml = p.image ? "<img src=\""+p.image+"\" style=\"width:40px;height:40px;object-fit:cover;border-radius:4px;\">" : "<div style=\"width:40px;height:40px;background:#f3f4f6;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#9ca3af;\">No img</div>";
+    html += "<tr><td>" + imgHtml + "</td>";
+    html += "<td style=\"font-weight:500;\">" + p.name + "</td>";
+    html += "<td class=\"muted\">" + p.desc.substring(0,60) + "...</td>";
+    html += "<td class=\"tbl-actions\"><button class=\"btn-edit\" onclick=\"editProd("+i+")\">Modifier</button><button class=\"btn-del\" onclick=\"deleteProd("+i+")\">Supprimer</button></td></tr>";
+  });
+  list.innerHTML = html;
+}
+
+function openProdModal() {
+  var catId = document.getElementById("prod-cat-select").value;
+  if (!catId) { alert("S\u00e9lectionnez d\u2019abord une cat\u00e9gorie"); return; }
+  document.getElementById("prod-form").reset();
+  document.getElementById("prod-idx").value = "";
+  document.getElementById("prod-img-b64").value = "";
+  document.getElementById("img-thumb").innerHTML = "<span>Aucune</span>";
+  document.getElementById("prod-modal-title").textContent = "Ajouter un produit";
+  document.getElementById("admin-prod-modal").classList.add("open");
+}
+
+function closeProdModal() { document.getElementById("admin-prod-modal").classList.remove("open"); }
+
+function handleImg(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 2*1024*1024) { alert("Image trop grande. Maximum 2MB."); return; }
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    document.getElementById("prod-img-b64").value = ev.target.result;
+    document.getElementById("img-thumb").innerHTML = "<img src=\""+ev.target.result+"\">";
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveProd(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  var catId = document.getElementById("prod-cat-select").value;
+  var cat = data.categories.find(function(c){ return c.id===catId; });
+  if (!cat) return;
+  var idx = document.getElementById("prod-idx").value;
+  var name = document.getElementById("prod-name").value;
+  var desc = document.getElementById("prod-desc").value;
+  if (!name || !desc) { alert("Nom et description obligatoires."); return; }
+  var img = document.getElementById("prod-img-b64").value;
+  var prod = {name:name, desc:desc};
+  if (img) prod.image = img;
+  if (idx !== "") {
+    if (!img && cat.products[parseInt(idx)] && cat.products[parseInt(idx)].image) {
+      prod.image = cat.products[parseInt(idx)].image;
+    }
+    cat.products[parseInt(idx)] = prod;
+  } else {
+    cat.products.push(prod);
+  }
+  try {
+    save();
+    renderAdminProds();
+    renderPublicCats();
+    closeProdModal();
+    toast("Produit sauvegard\u00e9");
+  } catch(err) {
+    alert("Erreur: image trop grande pour la m\u00e9moire du navigateur.");
+  }
+}
+
+function editProd(i) {
+  var catId = document.getElementById("prod-cat-select").value;
+  var cat = data.categories.find(function(c){ return c.id===catId; });
+  if (!cat || !cat.products[i]) return;
+  var p = cat.products[i];
+  document.getElementById("prod-idx").value = i;
+  document.getElementById("prod-name").value = p.name;
+  document.getElementById("prod-desc").value = p.desc;
+  document.getElementById("prod-img-b64").value = "";
+  document.getElementById("img-thumb").innerHTML = p.image ? "<img src=\""+p.image+"\">" : "<span>Aucune</span>";
+  document.getElementById("prod-modal-title").textContent = "Modifier le produit";
+  document.getElementById("admin-prod-modal").classList.add("open");
+}
+
+function deleteProd(i) {
+  if (!confirm("Supprimer ce produit ?")) return;
+  var catId = document.getElementById("prod-cat-select").value;
+  var cat = data.categories.find(function(c){ return c.id===catId; });
+  if (!cat) return;
+  cat.products.splice(i,1);
+  save(); renderAdminProds(); renderPublicCats();
+  toast("Produit supprim\u00e9");
+}
+
+// START
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
